@@ -24,25 +24,17 @@ namespace MongoDbDemo.Services
             return model;
         }
 
-        public async Task<Personel> GetById(string id)
-        {
-            return  await _collection.FindAsync<Personel>(x => x.Id == id).Result.FirstOrDefaultAsync();
-        }
-
         public async Task<IEnumerable<Personel>> GetPersonels()
         {
             var personels = await _collection.FindAsync(x => true).Result.ToListAsync();
             return personels;
         }
 
-        public async Task Delete(string id)
-        {
-            await _collection.DeleteOneAsync(m => m.Id == id);
-        }
+        public async Task<Personel> GetById(string id) => await _collection.FindAsync<Personel>(x => x.Id == id).Result.FirstOrDefaultAsync();
 
-        public async Task Update(string id, Personel personel)
-        {
-            await _collection.ReplaceOneAsync(m => m.Id == id, personel);
-        }
+        public async Task Delete(string id) => await _collection.DeleteOneAsync(m => m.Id == id);
+
+        public async Task Update(string id, Personel personel) => await _collection.ReplaceOneAsync(m => m.Id == id, personel);
+
     }
 }

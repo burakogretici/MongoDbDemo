@@ -33,8 +33,6 @@ namespace MongoDbDemo
 
             services.AddControllers();
 
-           
-            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoDbDemo", Version = "v1" });

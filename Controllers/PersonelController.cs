@@ -9,13 +9,8 @@ namespace MongoDbDemo.Controllers
     [ApiController]
     public class PersonelController : ControllerBase
     {
-
         private readonly IPersonelService _personelService;
-
-        public PersonelController(IPersonelService personelService)
-        {
-            _personelService = personelService;
-        }
+        public PersonelController(IPersonelService personelService) => _personelService = personelService;
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Personel personel)
